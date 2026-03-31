@@ -3,139 +3,367 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
-const categories = [
+const bowlsByBase = [
   {
-    name: 'Açaí Bowls',
+    base: 'Playa Açaí',
     emoji: '🫐',
-    color: 'bg-purple-50 border-purple-200',
-    badge: 'bg-purple-100 text-purple-700',
+    desc: 'Our signature açaí blend',
+    color: 'bg-purple-50',
+    border: 'border-purple-200',
+    dot: 'bg-purple-400',
     items: [
-      { name: 'Original Açaí', price: '$11.99', desc: 'Açaí, banana, strawberry, honey, granola, coconut flakes' },
-      { name: 'PB & Jelly Bowl', price: '$12.99', desc: 'Açaí, banana, peanut butter, strawberry jam, granola' },
-      { name: 'Coco Loco', price: '$12.99', desc: 'Açaí, coconut milk, mango, pineapple, toasted coconut' },
-      { name: 'Surf Rider', price: '$13.49', desc: 'Açaí, blueberry, banana, almond butter, chia, hemp seeds' },
+      { name: '8th Ave', desc: 'Playa Açaí topped with blueberry flax granola, banana & honey' },
+      { name: 'Pura Vida', desc: 'Playa Açaí topped with blueberry flax granola, strawberry, blueberry & honey' },
+      { name: 'Tropical', desc: 'Playa Açaí topped with blueberry flax granola, pineapple, banana, coconut flakes & honey' },
+      { name: 'Nutella Bowl', desc: 'Playa Açaí topped with blueberry flax granola, strawberry, banana, coconut flakes & Nutella®' },
+      { name: 'Power Bowl', desc: 'Playa Açaí with chocolate protein topped with blueberry flax granola, banana & peanut butter' },
     ],
   },
   {
-    name: 'Pitaya (Dragon Fruit) Bowls',
+    base: 'Playa Mango',
+    emoji: '🥭',
+    desc: 'Sweet tropical mango base',
+    color: 'bg-orange-50',
+    border: 'border-orange-200',
+    dot: 'bg-orange-400',
+    items: [
+      { name: 'Mucho Mango Bowl', desc: 'Playa Mango topped with blueberry flax granola, pineapple, banana, coconut flakes & honey' },
+      { name: 'Mango Berry Bowl', desc: 'Playa Mango topped with blueberry flax granola, strawberry, blueberry & honey' },
+      { name: 'Goldie Mango Bowl', desc: 'Playa Mango topped with blueberry flax granola, strawberry, banana & Nutella®' },
+      { name: 'Mango Power Bowl', desc: 'Playa Mango with vanilla protein topped with blueberry flax granola, banana & peanut butter' },
+    ],
+  },
+  {
+    base: 'Playa Pitaya',
     emoji: '🐉',
-    color: 'bg-pink-50 border-pink-200',
-    badge: 'bg-pink-100 text-pink-700',
+    desc: 'Vibrant dragon fruit base',
+    color: 'bg-pink-50',
+    border: 'border-pink-200',
+    dot: 'bg-pink-400',
     items: [
-      { name: 'Pink Sunset', price: '$12.99', desc: 'Pitaya, mango, pineapple, coconut flakes, agave' },
-      { name: 'Tropical Storm', price: '$13.49', desc: 'Pitaya, passion fruit, banana, kiwi, granola' },
-      { name: 'Island Breeze', price: '$12.49', desc: 'Pitaya, strawberry, lychee, mint, honey drizzle' },
+      { name: 'Pink Flamingo', desc: 'Playa Pitaya topped with blueberry flax granola, banana & honey' },
+      { name: 'Dragonberry', desc: 'Playa Pitaya topped with blueberry flax granola, strawberry, blueberry & honey' },
+      { name: 'Electric Mermaid', desc: 'Playa Pitaya topped with blueberry flax granola, pineapple, mango, kiwi, coconut flakes & honey' },
+      { name: 'Goji Bowl', desc: 'Playa Pitaya topped with blueberry flax granola, banana, pineapple, goji berries, coconut flakes & honey' },
+      { name: 'Nutaya', desc: 'Playa Pitaya topped with blueberry flax granola, banana, blueberry, cacao nibs, coconut flakes & Nutella®' },
+      { name: 'Pink Power', desc: 'Playa Pitaya with vanilla protein topped with blueberry flax granola, banana & honey' },
     ],
   },
   {
-    name: 'Green Bowls',
+    base: 'Playa Coconut',
+    emoji: '🥥',
+    desc: 'Creamy coconut base',
+    color: 'bg-yellow-50',
+    border: 'border-yellow-200',
+    dot: 'bg-yellow-400',
+    items: [
+      { name: 'Coco Bowl', desc: 'Playa Coconut blend topped with blueberry flax granola, banana & honey' },
+      { name: 'Coco Berry', desc: 'Playa Coconut blend topped with blueberry flax granola, strawberry, blueberry & honey' },
+      { name: 'Coco Craze', desc: 'Playa Coconut blend topped with blueberry flax granola, banana, mango, pineapple, coconut flakes & honey' },
+      { name: 'Coconut Power', desc: 'Playa Coconut blend with vanilla protein topped with blueberry flax granola, banana, coconut flakes & almond butter' },
+      { name: 'Nutelloco', desc: 'Playa Coconut blend topped with blueberry flax granola, banana, strawberry, coconut flakes, cacao nibs & Nutella®' },
+    ],
+  },
+  {
+    base: 'Green',
     emoji: '🥬',
-    color: 'bg-green-50 border-green-200',
-    badge: 'bg-green-100 text-green-700',
+    desc: 'Kale, banana, pineapple & coconut milk',
+    color: 'bg-green-50',
+    border: 'border-green-200',
+    dot: 'bg-green-400',
     items: [
-      { name: 'The Green Machine', price: '$12.99', desc: 'Spinach, banana, almond milk, almond butter, chia seeds' },
-      { name: 'Avocado Dream', price: '$13.99', desc: 'Avocado, banana, spinach, hemp seeds, honey, granola' },
-      { name: 'Matcha Zen', price: '$12.99', desc: 'Matcha, banana, coconut milk, almonds, blueberries' },
+      { name: 'Ocean Ave', desc: 'Green blend topped with blueberry flax granola, banana & honey' },
+      { name: 'Pacific', desc: 'Green blend topped with blueberry flax granola, banana, strawberry, sliced almonds, chia seeds & honey' },
+      { name: 'Hemp', desc: 'Green blend topped with blueberry flax granola, banana, blueberry, hemp seeds & agave' },
+      { name: 'Lola', desc: 'Green blend topped with blueberry flax granola, pineapple, mango, coconut flakes & honey' },
+      { name: 'Green Power Bowl', desc: 'Green blend with vanilla protein topped with blueberry flax granola, banana & almond butter' },
     ],
   },
   {
-    name: 'Smoothies',
-    emoji: '🥤',
-    color: 'bg-yellow-50 border-yellow-200',
-    badge: 'bg-yellow-100 text-yellow-700',
+    base: 'Banana',
+    emoji: '🍌',
+    desc: 'Banana, honey & almond milk base',
+    color: 'bg-amber-50',
+    border: 'border-amber-200',
+    dot: 'bg-amber-400',
     items: [
-      { name: 'Mango Tango', price: '$8.99', desc: '16 oz — Mango, pineapple, orange juice, turmeric' },
-      { name: 'Berry Blast', price: '$8.99', desc: '16 oz — Mixed berries, banana, almond milk, honey' },
-      { name: 'Peanut Power', price: '$9.49', desc: '16 oz — Banana, peanut butter, oat milk, cacao, vanilla' },
-      { name: 'Green Detox', price: '$9.49', desc: '16 oz — Spinach, cucumber, apple, ginger, lemon' },
+      { name: 'Nica', desc: 'Banana blend topped with blueberry flax granola, banana, strawberry, walnuts, cacao nibs & peanut butter' },
+      { name: 'Tide', desc: 'Banana blend topped with blueberry flax granola, pineapple, mango, kiwi, goji berries, bee pollen & honey' },
+      { name: 'Olas', desc: 'Banana blend topped with blueberry flax granola, banana, blueberry, coconut flakes, chia seeds & almond butter' },
+      { name: 'Costa', desc: 'Banana blend with vanilla protein topped with blueberry flax granola, banana, mint & Nutella®' },
     ],
   },
   {
-    name: 'Juices & More',
-    emoji: '🍹',
-    color: 'bg-orange-50 border-orange-200',
-    badge: 'bg-orange-100 text-orange-700',
+    base: 'Oatmeal',
+    emoji: '🌾',
+    desc: 'Warm oatmeal base bowls',
+    color: 'bg-stone-50',
+    border: 'border-stone-200',
+    dot: 'bg-stone-400',
     items: [
-      { name: 'Cold-Pressed OJ', price: '$5.99', desc: 'Fresh-squeezed orange juice, served daily' },
-      { name: 'Coconut Water', price: '$4.99', desc: '100% natural coconut water, straight from the source' },
-      { name: 'Açaí Shot', price: '$3.99', desc: 'A concentrated 2oz shot of pure açaí power' },
+      { name: '#1 Nutella Bowl', desc: 'Strawberry, banana, coconut flakes, Nutella®' },
+      { name: '#2 Blueberry, Strawberry & Almonds', desc: 'Blueberry, strawberry, sliced almonds' },
+      { name: '#3 Power Bowl', desc: 'Banana, peanut butter, chocolate protein' },
+      { name: '#4 Maple & Brown Sugar', desc: 'Maple & brown sugar' },
+      { name: '#5 Banana, Cinnamon, Figs & Walnuts', desc: 'Banana, walnut, cinnamon, fig' },
     ],
   },
 ];
+
+const specialBowls = [
+  { name: 'Booster Bowl', desc: 'Booster blend (banana, peanut butter, vanilla protein, flax oil, spirulina & cashew milk) topped with blueberry flax granola, banana, chia seeds & peanut butter' },
+  { name: 'Stupid Cupid Bowl', desc: 'Stupid Cupid blend (strawberry, banana & coconut milk) topped with blueberry flax granola, strawberry, cacao nibs, coconut flakes, Nutella® & white chocolate' },
+];
+
+const smoothies = [
+  { name: 'Pink Pitaya', desc: 'Playa Pitaya, coconut milk' },
+  { name: 'Strawberry Banana', desc: 'Strawberry, banana, coconut milk' },
+  { name: 'Matcha', desc: 'Matcha green tea, banana, pineapple, coconut milk' },
+  { name: 'Orange Power', desc: 'Orange, vanilla protein, pineapple, coconut milk' },
+  { name: 'Green Smoothie', desc: 'Kale, pineapple, banana, coconut milk' },
+  { name: 'Kowabunga', desc: 'Banana, strawberry, blueberry, coconut milk' },
+  { name: 'Dang', desc: 'Banana, wheat grass powder, peanut butter, cinnamon, almond milk' },
+  { name: 'Dolce', desc: 'Banana, chocolate protein, peanut butter, coconut milk' },
+  { name: 'Aloha', desc: 'Banana, mango, pineapple, coconut milk' },
+  { name: 'Booster', desc: 'Banana, vanilla protein, flax oil, spirulina, peanut butter, cashew milk' },
+  { name: 'Acai Energy', desc: 'Playa Açaí, strawberry, banana, coconut milk' },
+  { name: 'Coconut New Orleans', desc: 'Banana, coconut base, chicory coffee concentrate, cacao nibs & oat milk' },
+  { name: 'Dolce Latte', desc: 'Banana, peanut butter, chicory coffee concentrate, chocolate protein & coconut milk' },
+];
+
+const coldPressedJuices = [
+  { name: 'Mermaid Fuel', desc: 'Kale, pineapple, apple, mint' },
+  { name: 'Green Room', desc: 'Kale, apple, cucumber, mint, lemon' },
+  { name: 'Ground Swell', desc: 'Kale, apple, spinach' },
+  { name: 'Ding Repair', desc: 'Cucumber, carrot, apple, beet, spinach' },
+  { name: 'Endless Summer', desc: 'Carrot, ginger' },
+  { name: 'Beach Break', desc: 'Pineapple, carrot, ginger, lemon' },
+  { name: 'Dawn Patrol', desc: 'Orange, carrot, apple' },
+];
+
+const shots = [
+  { name: 'Elderberry Shot', desc: 'Apple, organic lemon, elderberry & cayenne pepper — boosts immunity & reduces inflammation' },
+  { name: 'Ginger Bomb', desc: 'Orange, ginger, lemon, himalayan salt & oregano extract — improves digestion & boosts immunity' },
+  { name: 'Blue Mermaid Wave', desc: 'Filtered water, organic lemon, simple syrup & blue spirulina — rich in antioxidants' },
+  { name: 'Wellness Warrior', desc: 'Apple, carrot, lemon, ginger, beet, turmeric & cayenne — boosts your immune system' },
+  { name: 'Green Barrel', desc: 'Pineapple, apple, chard, celery, kale, ginger, spirulina & wheatgrass — eliminates toxins' },
+  { name: 'Orange Surf Quencher', desc: '100% all natural fresh oranges — good source of vitamin C' },
+  { name: 'Daylight Detox', desc: 'Filtered water, organic lemon, dragon fruit puree, ginger, fo-ti root, cayenne & himalayan salt — promotes a healthy gut' },
+];
+
+const coldBrews = [
+  { name: 'Playola Cold Brew', desc: 'Chicory coffee concentrate (New Orleans Style)' },
+  { name: 'Sweet Cream Cold Brew', desc: 'Chicory coffee concentrate (New Orleans style) with sweet cream creamer & oat milk' },
+];
+
+const proteinWave = [
+  { name: 'Protein Power Açaí Bowl', desc: 'Playa Açaí with chocolate protein topped with blueberry flax granola, banana & peanut butter', type: 'bowl' },
+  { name: 'Protein Tropical Açaí Bowl', desc: 'Playa Açaí with chocolate protein topped with blueberry flax granola, pineapple, banana, coconut flakes & honey', type: 'bowl' },
+  { name: 'Tidal Wave Smoothie', desc: 'Playa Coconut® blend, banana, pineapple, vanilla protein, blue spirulina, coconut milk & Cocowhip®', type: 'smoothie' },
+  { name: 'Wellness Wave Smoothie', desc: 'Kale, pineapple, banana, vanilla protein, coconut milk & Cocowhip®', type: 'smoothie' },
+  { name: 'Rise & Shine Smoothie', desc: 'Banana, blueberry, vanilla protein, peanut butter, blueberry flax granola & coconut milk', type: 'smoothie' },
+];
+
+const matchaMania = [
+  { name: 'Coco Madness Bowl', desc: 'Half Matcha Base (Playa Coconut® Base, banana, matcha & coconut milk), Half Playa Coconut® Base topped with blueberry flax granola, strawberry, mango & coco whip', type: 'bowl' },
+  { name: 'Strawberry Madness Bowl', desc: 'Half Matcha Base, Half Stupid Cupid Base (strawberry, banana & coconut milk) topped with blueberry flax granola, strawberry, banana, cacao nibs & Nutella®', type: 'bowl' },
+  { name: 'Matcha Mango Smoothie', desc: 'Playa Coconut® Base, banana, matcha & coconut milk layered with Playa Mango Base', type: 'smoothie' },
+  { name: 'Matcha Berry Smoothie', desc: 'Playa Coconut® Base, banana, matcha & coconut milk layered with Stupid Cupid Base (strawberry, banana & coconut milk)', type: 'smoothie' },
+];
 ---
 
-<Layout title="Menu & Services" description="Explore Playa Bowls Nashville's full menu — açaí bowls, pitaya bowls, green bowls, smoothies, and fresh juices.">
+<Layout title="Menu" description="Explore the full Playa Bowls Nashville menu — açaí bowls, pitaya bowls, smoothies, cold pressed juices, cold brew and more.">
   <Navbar />
 
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-brand-green to-green-800 py-20 text-center relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-72 h-72 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+  <section class="bg-brand-dark py-16 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
     <div class="relative max-w-3xl mx-auto px-4">
-      <span class="text-brand-yellow font-semibold text-sm uppercase tracking-widest">Fresh Daily</span>
-      <h1 class="font-display font-black text-white text-5xl md:text-6xl mt-3 mb-4">Our Menu</h1>
-      <p class="text-green-100 text-lg leading-relaxed">
-        Every item is handcrafted with real ingredients. No shortcuts, no fillers — just pure, tropical goodness.
+      <p class="text-brand-yellow font-semibold text-sm uppercase tracking-widest mb-3">Nashville, TN</p>
+      <h1 class="font-display font-black text-white text-5xl md:text-6xl mb-4">Our Menu</h1>
+      <p class="text-gray-400 text-lg max-w-xl mx-auto">
+        Using the freshest, highest quality ingredients, we serve healthy, delicious açaí, pitaya, coconut bowls and smoothies with sustainability and community in mind.
       </p>
-    </div>
-    <div class="absolute bottom-0 left-0 right-0">
-      <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 50L1440 50L1440 20C1200 45 960 50 720 42C480 35 240 10 0 20L0 50Z" fill="#FFF8F0"/>
-      </svg>
+      <a href="/locations" class="inline-block mt-8 bg-brand-red hover:bg-red-700 text-white font-bold px-8 py-3 rounded-full transition">
+        Order Now
+      </a>
     </div>
   </section>
 
-  <!-- Menu Categories -->
-  <section class="py-16 bg-brand-cream">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
-      {categories.map(cat => (
-        <div class={`rounded-3xl border-2 ${cat.color} overflow-hidden`}>
-          <div class="px-8 py-6 flex items-center gap-3 border-b border-current/10">
-            <span class="text-3xl">{cat.emoji}</span>
-            <h2 class="font-display font-black text-brand-dark text-2xl">{cat.name}</h2>
-            <span class={`ml-auto text-xs font-bold px-3 py-1 rounded-full ${cat.badge}`}>
-              {cat.items.length} items
-            </span>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-current/10">
-            {cat.items.map((item, idx) => (
-              <div class={`p-6 ${idx % 2 === 0 && idx === cat.items.length - 1 && cat.items.length % 2 !== 0 ? 'sm:col-span-2' : ''}`}>
-                <div class="flex justify-between items-start mb-1.5">
-                  <h3 class="font-semibold text-brand-dark text-base">{item.name}</h3>
-                  <span class="font-bold text-brand-coral ml-4 shrink-0">{item.price}</span>
+  <div class="bg-brand-cream">
+
+    <!-- ── MATCHA MANIA ── -->
+    <section class="py-14 border-b border-gray-200">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">New</span>
+          <h2 class="font-display font-black text-brand-dark text-3xl">Matcha Mania 🍵</h2>
+        </div>
+        <p class="text-gray-500 text-sm mb-8">Earthy, vibrant, and naturally energizing — matcha brings a balanced boost to your day.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {matchaMania.map(item => (
+            <div class="bg-white rounded-2xl p-5 border border-green-100 shadow-sm">
+              <div class="flex items-start justify-between gap-2 mb-1.5">
+                <h3 class="font-display font-bold text-brand-dark text-base">{item.name}</h3>
+                <span class="shrink-0 text-xs bg-green-100 text-green-700 font-semibold px-2 py-0.5 rounded-full capitalize">{item.type}</span>
+              </div>
+              <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROTEIN WAVE ── -->
+    <section class="py-14 border-b border-gray-200">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">New</span>
+          <h2 class="font-display font-black text-brand-dark text-3xl">Protein Wave 💪</h2>
+        </div>
+        <p class="text-gray-500 text-sm mb-8">A whole new wave of bowls and smoothies packed with protein — same fresh ingredients you love.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {proteinWave.map(item => (
+            <div class="bg-white rounded-2xl p-5 border border-blue-100 shadow-sm">
+              <div class="flex items-start justify-between gap-2 mb-1.5">
+                <h3 class="font-display font-bold text-brand-dark text-base">{item.name}</h3>
+                <span class="shrink-0 text-xs bg-blue-100 text-blue-700 font-semibold px-2 py-0.5 rounded-full capitalize">{item.type}</span>
+              </div>
+              <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BOWLS ── -->
+    <section class="py-14 border-b border-gray-200">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display font-black text-brand-dark text-3xl mb-2">Bowls 🥣</h2>
+        <p class="text-gray-500 text-sm mb-10">Using predominantly plant-based ingredients, our bowls are stacked with the nourishment you need and the flavors you crave. Browse by base below.</p>
+
+        <div class="space-y-8">
+          {bowlsByBase.map(base => (
+            <div class={`rounded-2xl border ${base.border} overflow-hidden`}>
+              <div class={`${base.color} px-6 py-4 flex items-center gap-3`}>
+                <span class="text-2xl">{base.emoji}</span>
+                <div>
+                  <h3 class="font-display font-bold text-brand-dark text-lg leading-none">{base.base}</h3>
+                  <p class="text-gray-500 text-xs mt-0.5">{base.desc}</p>
                 </div>
-                <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                <span class="ml-auto text-xs font-bold text-gray-400">{base.items.length} bowls</span>
+              </div>
+              <div class="bg-white divide-y divide-gray-100">
+                {base.items.map(item => (
+                  <div class="px-6 py-4 flex items-start gap-3">
+                    <div class={`w-2 h-2 rounded-full ${base.dot} mt-1.5 shrink-0`}></div>
+                    <div>
+                      <span class="font-semibold text-brand-dark text-sm">{item.name}</span>
+                      <p class="text-gray-500 text-sm leading-relaxed mt-0.5">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <!-- Special Bowls -->
+          <div class="rounded-2xl border border-red-200 overflow-hidden">
+            <div class="bg-red-50 px-6 py-4 flex items-center gap-3">
+              <span class="text-2xl">⭐</span>
+              <div>
+                <h3 class="font-display font-bold text-brand-dark text-lg leading-none">Special Bowls</h3>
+                <p class="text-gray-500 text-xs mt-0.5">Fan favorites with unique blends</p>
+              </div>
+            </div>
+            <div class="bg-white divide-y divide-gray-100">
+              {specialBowls.map(item => (
+                <div class="px-6 py-4 flex items-start gap-3">
+                  <div class="w-2 h-2 rounded-full bg-red-400 mt-1.5 shrink-0"></div>
+                  <div>
+                    <span class="font-semibold text-brand-dark text-sm">{item.name}</span>
+                    <p class="text-gray-500 text-sm leading-relaxed mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SMOOTHIES ── -->
+    <section class="py-14 border-b border-gray-200">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display font-black text-brand-dark text-3xl mb-2">Smoothies 🥤</h2>
+        <p class="text-gray-500 text-sm mb-8">Available in 16oz or 20oz.</p>
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-2">
+            {smoothies.map((item, i) => (
+              <div class={`px-6 py-4 border-b border-gray-100 ${i % 2 !== 0 ? 'sm:border-l' : ''}`}>
+                <div class="font-semibold text-brand-dark text-sm">{item.name}</div>
+                <p class="text-gray-500 text-sm mt-0.5 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Customization note -->
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-      <div class="text-5xl mb-4">🎨</div>
-      <h2 class="font-display font-black text-brand-dark text-3xl md:text-4xl mb-4">Make It Yours</h2>
-      <p class="text-gray-500 text-lg leading-relaxed mb-8">
-        Every bowl is fully customizable. Add extra toppings, swap bases, adjust portion size, or ask about allergen-friendly options. Just ask!
-      </p>
-      <div class="flex flex-wrap justify-center gap-3 text-sm font-semibold">
-        {['Gluten-Free Options', 'Vegan Friendly', 'Nut-Free Available', 'Protein Add-ons', 'Extra Toppings', 'Half Portions'].map(tag => (
-          <span class="bg-brand-green/10 text-brand-green px-4 py-2 rounded-full">{tag}</span>
-        ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="bg-brand-yellow py-16 text-center">
+    <!-- ── COLD PRESSED JUICES ── -->
+    <section class="py-14 border-b border-gray-200">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display font-black text-brand-dark text-3xl mb-2">Cold Pressed Juices 🍏</h2>
+        <p class="text-gray-500 text-sm mb-8">Available in 12oz, 16oz, or 20oz. Tastes best after a surf sesh!</p>
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-2">
+            {coldPressedJuices.map((item, i) => (
+              <div class={`px-6 py-4 border-b border-gray-100 ${i % 2 !== 0 ? 'sm:border-l' : ''}`}>
+                <div class="font-semibold text-brand-dark text-sm">{item.name}</div>
+                <p class="text-gray-500 text-sm mt-0.5 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Shots -->
+        <h3 class="font-display font-bold text-brand-dark text-xl mt-10 mb-4">Wellness Shots ⚡</h3>
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+          {shots.map(item => (
+            <div class="px-6 py-4 border-b border-gray-100 last:border-0">
+              <div class="font-semibold text-brand-dark text-sm">{item.name}</div>
+              <p class="text-gray-500 text-sm mt-0.5 leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── COLD BREW ── -->
+    <section class="py-14">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display font-black text-brand-dark text-3xl mb-2">Cold Brew ☕</h2>
+        <p class="text-gray-500 text-sm mb-8">Our specialty Cold Brew line, sure to fuel your day!</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {coldBrews.map(item => (
+            <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+              <div class="font-display font-bold text-brand-dark text-lg mb-1">{item.name}</div>
+              <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Nutrition note -->
+  <section class="bg-brand-dark py-10 text-center">
     <div class="max-w-2xl mx-auto px-4">
-      <h2 class="font-display font-black text-brand-dark text-3xl md:text-4xl mb-3">Hungry? Come on in!</h2>
-      <p class="text-yellow-800 text-lg mb-8">No reservations needed. Walk in and build your perfect bowl.</p>
-      <a href="/locations" class="bg-brand-green hover:bg-green-700 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all hover:shadow-xl">
-        Find Our Location →
-      </a>
+      <p class="text-gray-400 text-sm">
+        Menu items may vary by location. For nutrition facts, allergen info, and customization options, ask our team in-store.
+        Full nutrition information available at <a href="https://playabowls.com" class="text-brand-yellow hover:underline" target="_blank" rel="noopener noreferrer">playabowls.com</a>.
+      </p>
     </div>
   </section>
 

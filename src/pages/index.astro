@@ -3,29 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
-const features = [
-  {
-    icon: '🌊',
-    title: 'Always Fresh',
-    desc: 'Every bowl is made to order with real fruit, fresh toppings, and quality ingredients you can trust.',
-  },
-  {
-    icon: '🌿',
-    title: 'Clean & Healthy',
-    desc: 'No artificial anything. Just wholesome, nutrient-packed goodness that fuels your day.',
-  },
-  {
-    icon: '🎨',
-    title: 'Customize Your Bowl',
-    desc: 'Build your perfect bowl from dozens of bases, toppings, and drizzles. It\'s your creation.',
-  },
-];
-
-const menu_highlights = [
-  { name: 'Acaí Original', desc: 'Acaí, banana, strawberry, honey, granola', color: 'bg-purple-100', emoji: '🫐' },
-  { name: 'Pitaya Bowl', desc: 'Dragon fruit, mango, pineapple, coconut flakes', color: 'bg-pink-100', emoji: '🐉' },
-  { name: 'Green Bowl', desc: 'Spinach, banana, almond butter, chia seeds', color: 'bg-green-100', emoji: '🥑' },
-  { name: 'Tropical Smoothie', desc: 'Mango, pineapple, coconut milk, turmeric', color: 'bg-yellow-100', emoji: '🥭' },
+const categories = [
+  { emoji: '🫐', name: 'Açaí Bowls', href: '/services#acai', color: 'bg-purple-100 hover:bg-purple-200' },
+  { emoji: '🥭', name: 'Mango Bowls', href: '/services#mango', color: 'bg-orange-100 hover:bg-orange-200' },
+  { emoji: '🐉', name: 'Pitaya Bowls', href: '/services#pitaya', color: 'bg-pink-100 hover:bg-pink-200' },
+  { emoji: '🥥', name: 'Coconut Bowls', href: '/services#coconut', color: 'bg-yellow-100 hover:bg-yellow-200' },
+  { emoji: '🥬', name: 'Green Bowls', href: '/services#green', color: 'bg-green-100 hover:bg-green-200' },
+  { emoji: '🥤', name: 'Smoothies', href: '/services#smoothies', color: 'bg-sky-100 hover:bg-sky-200' },
+  { emoji: '🍏', name: 'Cold Pressed', href: '/services#juices', color: 'bg-lime-100 hover:bg-lime-200' },
+  { emoji: '☕', name: 'Cold Brew', href: '/services#coldbrew', color: 'bg-amber-100 hover:bg-amber-200' },
 ];
 ---
 
@@ -33,119 +19,134 @@ const menu_highlights = [
   <Navbar />
 
   <!-- Hero -->
-  <section class="relative bg-brand-green overflow-hidden">
-    <!-- Decorative blobs -->
-    <div class="absolute -top-20 -right-20 w-96 h-96 bg-brand-yellow/20 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-brand-coral/20 rounded-full blur-3xl pointer-events-none"></div>
+  <section class="bg-brand-dark min-h-[520px] flex items-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 32px 32px;"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-red/20 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-brand-teal/20 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/2"></div>
 
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36 text-center">
-      <div class="inline-flex items-center gap-2 bg-white/10 text-brand-yellow text-sm font-semibold px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm border border-white/20">
-        🌴 Now Open in Nashville
-      </div>
-      <h1 class="font-display font-black text-white text-5xl md:text-7xl leading-none mb-6">
-        Eat Fresh.<br/>
-        <span class="text-brand-yellow">Live Tropical.</span>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center w-full">
+      <p class="text-brand-yellow font-semibold text-sm uppercase tracking-[0.2em] mb-4">Nashville, Tennessee</p>
+      <h1 class="font-display font-black text-white text-5xl md:text-7xl leading-none mb-3">
+        find your<br/>
+        <span class="text-brand-yellow">playa bowls</span>
       </h1>
-      <p class="text-green-100 text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
-        Nashville's home for açaí bowls, pitaya bowls, smoothies, and clean eats that bring the beach right to Music City.
+      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mt-6 mb-10 leading-relaxed">
+        Playa Bowls™ is your slice of summer, anytime. Using the freshest, highest quality ingredients, we serve healthy, delicious açaí, pitaya, coconut bowls and smoothies with sustainability and community in mind.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/services" class="bg-brand-coral hover:bg-orange-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5">
-          See Our Menu
+        <a href="/services" class="bg-brand-red hover:bg-red-700 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg transition-all hover:-translate-y-0.5">
+          View Full Menu
         </a>
-        <a href="/locations" class="bg-white/10 hover:bg-white/20 text-white font-bold text-lg px-8 py-4 rounded-full border border-white/30 backdrop-blur-sm transition-all">
-          Find Us
+        <a href="/locations" class="bg-white/10 hover:bg-white/20 text-white font-bold text-lg px-8 py-4 rounded-full border border-white/20 transition-all">
+          Find Our Location
         </a>
       </div>
     </div>
 
-    <!-- Wave divider -->
     <div class="absolute bottom-0 left-0 right-0">
-      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 60L60 50C120 40 240 20 360 15C480 10 600 20 720 27.5C840 35 960 40 1080 37.5C1200 35 1320 25 1380 20L1440 15V60H1380C1320 60 1200 60 1080 60C960 60 840 60 720 60C600 60 480 60 360 60C240 60 120 60 60 60H0Z" fill="#FFF8F0"/>
+      <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 40L1440 40L1440 15C1200 35 960 40 720 32C480 24 240 5 0 15L0 40Z" fill="#FAFAF8"/>
       </svg>
     </div>
   </section>
 
-  <!-- Why Playa Bowls -->
-  <section class="py-20 bg-brand-cream">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-14">
-        <h2 class="font-display font-black text-brand-dark text-4xl md:text-5xl mb-4">
-          Why Playa Bowls?
-        </h2>
-        <p class="text-gray-500 text-lg max-w-xl mx-auto">
-          We believe healthy food should taste amazing and make you feel even better.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {features.map(f => (
-          <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition text-center border border-orange-50">
-            <div class="text-5xl mb-4">{f.icon}</div>
-            <h3 class="font-display font-bold text-brand-dark text-xl mb-3">{f.title}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
-          </div>
+  <!-- Browse by Category -->
+  <section class="py-16 bg-brand-cream">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display font-black text-brand-dark text-3xl md:text-4xl text-center mb-2">Browse Our Menu</h2>
+      <p class="text-center text-gray-500 mb-10">Born on the beach and built for Music City.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {categories.map(cat => (
+          <a href={cat.href} class={`${cat.color} rounded-2xl p-5 text-center transition-all hover:scale-105 hover:shadow-sm`}>
+            <div class="text-4xl mb-2">{cat.emoji}</div>
+            <div class="font-display font-bold text-brand-dark text-sm">{cat.name}</div>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Menu Highlights -->
-  <section class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-14">
-        <span class="text-brand-coral font-semibold text-sm uppercase tracking-widest">Fresh Every Day</span>
-        <h2 class="font-display font-black text-brand-dark text-4xl md:text-5xl mt-2 mb-4">Menu Favorites</h2>
-        <p class="text-gray-500 text-lg max-w-xl mx-auto">A taste of what's waiting for you at the shop.</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {menu_highlights.map(item => (
-          <div class={`${item.color} rounded-3xl p-6 hover:scale-105 transition-transform duration-200 cursor-default`}>
-            <div class="text-4xl mb-3">{item.emoji}</div>
-            <h3 class="font-display font-bold text-brand-dark text-lg mb-1">{item.name}</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+  <!-- Brand statement -->
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-brand-red font-semibold text-sm uppercase tracking-widest mb-3">Your Morning Booster</p>
+          <h2 class="font-display font-black text-brand-dark text-4xl mb-5 leading-tight">
+            Your Morning Booster &amp; Lunch Break Dream
+          </h2>
+          <p class="text-gray-500 leading-relaxed mb-4">
+            We're your morning booster and your lunch break dream; your post-surf fix and perfect nightcap. Using predominantly plant-based ingredients, our bowls are stacked with the nourishment you need and the flavors you crave.
+          </p>
+          <p class="text-gray-500 leading-relaxed mb-8">
+            We can't wait to see you again!
+          </p>
+          <a href="/services" class="inline-flex items-center gap-2 bg-brand-dark hover:bg-gray-800 text-white font-bold px-8 py-3 rounded-full transition-all">
+            Order Now →
+          </a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-brand-red rounded-3xl p-7 text-white text-center">
+            <div class="font-display font-black text-4xl mb-1">74+</div>
+            <div class="text-red-200 text-sm">Menu Items</div>
           </div>
-        ))}
+          <div class="bg-brand-teal rounded-3xl p-7 text-white text-center">
+            <div class="font-display font-black text-4xl mb-1">7</div>
+            <div class="text-teal-200 text-sm">Bowl Bases</div>
+          </div>
+          <div class="bg-brand-yellow rounded-3xl p-7 text-brand-dark text-center">
+            <div class="font-display font-black text-4xl mb-1">100%</div>
+            <div class="text-yellow-800 text-sm">Plant-Based Options</div>
+          </div>
+          <div class="bg-brand-dark rounded-3xl p-7 text-white text-center">
+            <div class="font-display font-black text-4xl mb-1">1</div>
+            <div class="text-gray-400 text-sm">Nashville Location</div>
+          </div>
+        </div>
       </div>
-      <div class="text-center mt-10">
-        <a href="/services" class="inline-flex items-center gap-2 bg-brand-green hover:bg-green-700 text-white font-bold px-8 py-4 rounded-full shadow transition-all hover:shadow-md">
-          View Full Menu →
-        </a>
+    </div>
+  </section>
+
+  <!-- New arrivals callout -->
+  <section class="py-16 bg-brand-cream">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display font-black text-brand-dark text-3xl md:text-4xl text-center mb-10">What's New</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="bg-green-700 rounded-3xl p-8 text-white">
+          <span class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">New</span>
+          <h3 class="font-display font-black text-2xl mb-3">Matcha Mania 🍵</h3>
+          <p class="text-green-100 text-sm leading-relaxed mb-6">
+            Matcha Mania has officially arrived! Earthy, vibrant, and naturally energizing, matcha brings a balanced boost to your day. Paired with coconut, mango, strawberry, and more — this lineup blends wellness and flavor the Playa way. 💚
+          </p>
+          <a href="/services" class="inline-block bg-white text-green-700 font-bold text-sm px-6 py-2.5 rounded-full hover:bg-green-50 transition">Try It Now</a>
+        </div>
+        <div class="bg-blue-700 rounded-3xl p-8 text-white">
+          <span class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">New</span>
+          <h3 class="font-display font-black text-2xl mb-3">Protein Wave 💪</h3>
+          <p class="text-blue-100 text-sm leading-relaxed mb-6">
+            Introducing a whole new wave of bowls and smoothies made with the same fresh ingredients you love, now packed with protein. Fuel your day the Playa way.
+          </p>
+          <a href="/services" class="inline-block bg-white text-blue-700 font-bold text-sm px-6 py-2.5 rounded-full hover:bg-blue-50 transition">Try It Now</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Hours Banner -->
-  <section class="bg-brand-coral py-14">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-      <div class="text-4xl mb-4">🕐</div>
-      <h2 class="font-display font-black text-white text-3xl md:text-4xl mb-6">Today's Hours</h2>
-      <div class="inline-grid grid-cols-2 gap-x-16 gap-y-3 text-white text-lg font-semibold">
-        <span class="text-right text-orange-100 font-normal">Mon – Fri</span>
+  <section class="bg-brand-red py-12 text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="font-display font-black text-white text-3xl mb-6">Visit Us Today</h2>
+      <div class="inline-grid grid-cols-2 gap-x-16 gap-y-2 text-white font-semibold mb-8">
+        <span class="text-right text-red-200 font-normal">Mon – Fri</span>
         <span class="text-left">7:00 AM – 7:00 PM</span>
-        <span class="text-right text-orange-100 font-normal">Sat – Sun</span>
+        <span class="text-right text-red-200 font-normal">Sat – Sun</span>
         <span class="text-left">8:00 AM – 6:00 PM</span>
       </div>
-      <div class="mt-8">
-        <a href="/locations" class="bg-white text-brand-coral hover:bg-orange-50 font-bold px-8 py-3 rounded-full shadow transition-all">
+      <div>
+        <a href="/locations" class="bg-white text-brand-red hover:bg-red-50 font-bold px-8 py-3 rounded-full shadow transition-all">
           Get Directions
         </a>
       </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-24 bg-brand-cream text-center">
-    <div class="max-w-2xl mx-auto px-4">
-      <h2 class="font-display font-black text-brand-dark text-4xl md:text-5xl mb-4">
-        Ready to Bowl? 🏖️
-      </h2>
-      <p class="text-gray-500 text-lg mb-10">
-        Come visit us in downtown Nashville or reach out with any questions. We can't wait to see you!
-      </p>
-      <a href="/contact" class="bg-brand-coral hover:bg-orange-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5">
-        Contact Us
-      </a>
     </div>
   </section>
 

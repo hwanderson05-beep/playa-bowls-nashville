@@ -5,12 +5,14 @@ export default {
     extend: {
       colors: {
         brand: {
-          green:   '#1B6B3A',
-          lime:    '#5CB85C',
-          coral:   '#FF6B35',
-          yellow:  '#FFD166',
-          cream:   '#FFF8F0',
-          dark:    '#1A2E1A',
+          red:     '#C0392B',
+          green:   '#2D6A4F',
+          teal:    '#1A7A6A',
+          coral:   '#E85D3A',
+          yellow:  '#F5C842',
+          cream:   '#FAFAF8',
+          sand:    '#F5F0E8',
+          dark:    '#1C1C1C',
         },
       },
       fontFamily: {
