@@ -2,8 +2,67 @@
 export interface Props {
   title: string;
   description?: string;
+  keywords?: string;
+  canonical?: string;
 }
-const { title, description = "Playa Bowls Nashville — Fresh açaí bowls, smoothies, and healthy food in Nashville, TN." } = Astro.props;
+const {
+  title,
+  description = "Playa Bowls Nashville — Fresh açaí bowls, pitaya bowls, smoothies & cold-pressed juices in downtown Nashville, TN. Open 7 AM Mon–Fri.",
+  keywords = "açaí bowl Nashville, acai bowl Nashville TN, pitaya bowl Nashville, dragon fruit bowl Nashville, smoothie bowl Nashville, healthy food downtown Nashville, açaí downtown Nashville, Playa Bowls Nashville",
+  canonical,
+} = Astro.props;
+
+const siteUrl = "https://playa-bowls-nashville.vercel.app";
+const canonicalUrl = canonical ?? `${siteUrl}`;
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Playa Bowls Nashville",
+  "image": `${siteUrl}/og-image.jpg`,
+  "url": siteUrl,
+  "telephone": "+16155550100",
+  "priceRange": "$$",
+  "servesCuisine": ["Açaí Bowls", "Smoothie Bowls", "Juices", "Smoothies"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "246 Rep John Lewis Way N",
+    "addressLocality": "Nashville",
+    "addressRegion": "TN",
+    "postalCode": "37219",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 36.1627,
+    "longitude": -86.7816
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "07:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday","Sunday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }
+  ],
+  "menu": `${siteUrl}/services`,
+  "hasMap": "https://maps.google.com/?q=246+Rep+John+Lewis+Way+N+Nashville+TN+37219",
+  "description": "Playa Bowls Nashville serves fresh açaí bowls, pitaya (dragon fruit) bowls, mango bowls, coconut bowls, smoothies, and cold-pressed juices in downtown Nashville. Open early at 7 AM weekdays.",
+  "areaServed": [
+    "Downtown Nashville",
+    "SoBro",
+    "The Gulch",
+    "Germantown",
+    "Nashville, TN"
+  ],
+  "keywords": "açaí bowl Nashville, pitaya bowl Nashville, dragon fruit bowl Nashville, smoothie bowl Nashville"
+};
 ---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -11,6 +70,26 @@ const { title, description = "Playa Bowls Nashville — Fresh açaí bowls, smoo
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:title" content={`${title} | Playa Bowls Nashville`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Playa Bowls Nashville" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Playa Bowls Nashville`} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Local Business Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
     <title>{title} | Playa Bowls Nashville</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -4,7 +4,12 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Locations" description="Find Playa Bowls Nashville at 246 Rep John Lewis Way N, Nashville, TN 37219. Hours, parking, and directions.">
+<Layout
+  title="Location & Hours — Downtown Nashville"
+  description="Find Playa Bowls Nashville at 246 Rep John Lewis Way N, Nashville, TN 37219. Open Mon–Fri 7 AM, Sat–Sun 8 AM. Açaí bowls, pitaya (dragon fruit) bowls & smoothies near SoBro, The Gulch, and Germantown."
+  keywords="Playa Bowls Nashville location, açaí bowl downtown Nashville, pitaya bowl Nashville address, acai bowl near me Nashville, healthy food downtown Nashville TN, bowl restaurant Nashville"
+  canonical="https://playa-bowls-nashville.vercel.app/locations"
+>
   <Navbar />
 
   <!-- Hero -->
@@ -112,6 +117,36 @@ import Footer from '../components/Footer.astro';
             <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Neighborhood Proximity -->
+  <section class="py-16 bg-brand-cream">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display font-black text-brand-dark text-3xl text-center mb-3">Close to Every Nashville Neighborhood</h2>
+      <p class="text-center text-gray-500 mb-10 max-w-2xl mx-auto">Whether you work downtown, live in SoBro, or you're visiting Music City — we're right in the middle of it all.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {[
+          { area: 'Downtown / SoBro', travel: '2 min walk', emoji: '🏙️' },
+          { area: 'The Gulch', travel: '5 min drive', emoji: '🌿' },
+          { area: 'Germantown', travel: '8 min drive', emoji: '🏘️' },
+          { area: 'East Nashville', travel: '10 min drive', emoji: '🎸' },
+          { area: 'Midtown', travel: '7 min drive', emoji: '🎶' },
+          { area: 'WeHo / 12South', travel: '10 min drive', emoji: '☀️' },
+          { area: 'Wedgewood-Houston', travel: '8 min drive', emoji: '🎨' },
+          { area: 'Brentwood / Cool Springs', travel: '20 min drive', emoji: '🌳' },
+        ].map(n => (
+          <div class="bg-white rounded-2xl p-5 text-center shadow-sm">
+            <div class="text-3xl mb-2">{n.emoji}</div>
+            <div class="font-display font-bold text-brand-dark text-sm leading-tight">{n.area}</div>
+            <div class="text-gray-400 text-xs mt-1">{n.travel}</div>
+          </div>
+        ))}
+      </div>
+      <div class="mt-10 bg-brand-dark rounded-3xl p-8 text-center">
+        <p class="text-white font-display font-black text-xl mb-2">Searching for "açaí bowl near me" or "pitaya bowl Nashville"?</p>
+        <p class="text-gray-400 text-sm max-w-lg mx-auto">You found us. Playa Bowls Nashville is downtown Nashville's go-to for dragon fruit pitaya bowls, açaí bowls, mango bowls, fresh smoothies, and cold-pressed juices.</p>
       </div>
     </div>
   </section>

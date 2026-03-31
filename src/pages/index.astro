@@ -15,7 +15,12 @@ const categories = [
 ];
 ---
 
-<Layout title="Home">
+<Layout
+  title="Açaí Bowls & Pitaya Bowls in Nashville, TN"
+  description="Playa Bowls Nashville — Nashville's best açaí bowls, pitaya (dragon fruit) bowls, and smoothies. Open 7 AM Mon–Fri at 246 Rep John Lewis Way N, downtown Nashville."
+  keywords="açaí bowl Nashville, pitaya bowl Nashville, dragon fruit bowl Nashville, acai bowl downtown Nashville, smoothie bowl Nashville TN, healthy breakfast Nashville, best açaí Nashville"
+  canonical="https://playa-bowls-nashville.vercel.app"
+>
   <Navbar />
 
   <!-- Hero -->
@@ -128,6 +133,35 @@ const categories = [
           </p>
           <a href="/services" class="inline-block bg-white text-blue-700 font-bold text-sm px-6 py-2.5 rounded-full hover:bg-blue-50 transition">Try It Now</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Neighborhood / Local SEO Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display font-black text-brand-dark text-3xl md:text-4xl text-center mb-4">Nashville's Pitaya & Açaí Spot</h2>
+      <p class="text-center text-gray-500 max-w-2xl mx-auto mb-10">We're conveniently located downtown — an easy stop whether you're in SoBro, The Gulch, Germantown, or rolling through Broadway.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
+        {[
+          { area: 'Downtown / SoBro', mins: '2 min walk', emoji: '🏙️' },
+          { area: 'The Gulch', mins: '5 min drive', emoji: '🌿' },
+          { area: 'Germantown', mins: '8 min drive', emoji: '🏘️' },
+          { area: 'East Nashville', mins: '10 min drive', emoji: '🎸' },
+        ].map(n => (
+          <div class="bg-brand-cream rounded-2xl p-5 text-center">
+            <div class="text-3xl mb-2">{n.emoji}</div>
+            <div class="font-display font-bold text-brand-dark text-sm leading-tight">{n.area}</div>
+            <div class="text-gray-400 text-xs mt-1">{n.mins}</div>
+          </div>
+        ))}
+      </div>
+      <div class="bg-brand-dark rounded-3xl p-8 md:p-10 text-center">
+        <h3 class="font-display font-black text-white text-2xl md:text-3xl mb-3">Open Early — Every Weekday at 7 AM</h3>
+        <p class="text-gray-300 max-w-xl mx-auto mb-6">Beat the day with a dragon fruit pitaya bowl or an açaí bowl before work. We're one of the only spots in Nashville open this early with fresh, made-to-order bowls.</p>
+        <a href="/services" class="inline-flex bg-brand-yellow text-brand-dark font-bold px-8 py-3 rounded-full hover:bg-yellow-300 transition-all">
+          See the Full Menu →
+        </a>
       </div>
     </div>
   </section>
