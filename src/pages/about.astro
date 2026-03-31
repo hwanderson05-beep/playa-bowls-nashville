@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const values = [
+  { emoji: '🌿', title: 'Real Ingredients', desc: 'We source whole fruits and natural toppings — no syrups, no artificial flavors, no compromises.' },
+  { emoji: '🤝', title: 'Community First', desc: 'Nashville is our home. We support local events, sponsor youth sports, and give back to our neighbors.' },
+  { emoji: '🌊', title: 'Sustainability', desc: 'Eco-friendly packaging, minimal food waste, and responsible sourcing because the planet matters.' },
+  { emoji: '😄', title: 'Good Vibes Only', desc: 'Every visit should feel like a mini beach day. We bring positivity, warmth, and great energy.' },
+];
+---
+
+<Layout title="About Us" description="Learn about Playa Bowls Nashville — our story, mission, and commitment to fresh, healthy food in Music City.">
+  <Navbar />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-brand-dark to-green-950 py-20 text-center relative overflow-hidden">
+    <div class="absolute top-10 left-10 text-8xl opacity-10 pointer-events-none select-none">🌴</div>
+    <div class="absolute bottom-10 right-10 text-8xl opacity-10 pointer-events-none select-none">🌺</div>
+    <div class="relative max-w-3xl mx-auto px-4">
+      <span class="text-brand-yellow font-semibold text-sm uppercase tracking-widest">Our Story</span>
+      <h1 class="font-display font-black text-white text-5xl md:text-6xl mt-3 mb-4">About Us</h1>
+      <p class="text-gray-300 text-lg leading-relaxed">
+        Bringing the spirit of the beach to Nashville, one bowl at a time.
+      </p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 50L1440 50L1440 20C1200 45 960 50 720 42C480 35 240 10 0 20L0 50Z" fill="#FFF8F0"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-20 bg-brand-cream">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        <div>
+          <span class="text-brand-coral font-semibold text-sm uppercase tracking-widest">How It Started</span>
+          <h2 class="font-display font-black text-brand-dark text-4xl mt-3 mb-6 leading-tight">
+            Music City Deserved a Bowl
+          </h2>
+          <div class="space-y-4 text-gray-600 leading-relaxed">
+            <p>
+              Playa Bowls started with a simple belief: healthy food should be delicious, accessible, and feel like a celebration. What began as a small beach-side shop on the Jersey Shore has grown into a nationwide movement — and now it's Nashville's turn.
+            </p>
+            <p>
+              As a local franchise owner, Henry Anderson brought Playa Bowls to Nashville because he knew this city — full of energy, creativity, and community — was the perfect home for fresh, vibrant food that fuels big dreams.
+            </p>
+            <p>
+              Located in the heart of downtown Nashville, we're proud to serve the entrepreneurs, artists, athletes, and everyone in between who calls this city home.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-brand-green rounded-3xl p-8 text-white text-center">
+            <div class="font-display font-black text-5xl mb-1">100%</div>
+            <div class="text-green-200 text-sm font-semibold">Real Ingredients</div>
+          </div>
+          <div class="bg-brand-coral rounded-3xl p-8 text-white text-center">
+            <div class="font-display font-black text-5xl mb-1">20+</div>
+            <div class="text-orange-100 text-sm font-semibold">Bowl Options</div>
+          </div>
+          <div class="bg-brand-yellow rounded-3xl p-8 text-brand-dark text-center">
+            <div class="font-display font-black text-5xl mb-1">1</div>
+            <div class="text-yellow-800 text-sm font-semibold">Happy Location</div>
+          </div>
+          <div class="bg-purple-500 rounded-3xl p-8 text-white text-center">
+            <div class="font-display font-black text-5xl mb-1">∞</div>
+            <div class="text-purple-100 text-sm font-semibold">Good Vibes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="font-display font-black text-brand-dark text-4xl md:text-5xl mb-4">What We Stand For</h2>
+        <p class="text-gray-500 text-lg max-w-xl mx-auto">Our values aren't just words on a wall — they guide every bowl we make.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {values.map(v => (
+          <div class="flex gap-5 bg-brand-cream rounded-2xl p-6 hover:shadow-sm transition">
+            <div class="text-4xl shrink-0 mt-1">{v.emoji}</div>
+            <div>
+              <h3 class="font-display font-bold text-brand-dark text-lg mb-1.5">{v.title}</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">{v.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet the Team -->
+  <section class="py-20 bg-brand-cream">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-display font-black text-brand-dark text-4xl md:text-5xl mb-4">Meet the Owner</h2>
+      <p class="text-gray-500 text-lg mb-12 max-w-xl mx-auto">
+        Playa Bowls Nashville is locally owned and operated.
+      </p>
+      <div class="bg-white rounded-3xl shadow-sm p-10 max-w-md mx-auto border border-orange-50">
+        <div class="w-20 h-20 bg-gradient-to-br from-brand-green to-brand-coral rounded-full flex items-center justify-center mx-auto mb-5 shadow">
+          <span class="text-white font-display font-black text-2xl">HA</span>
+        </div>
+        <h3 class="font-display font-black text-brand-dark text-2xl mb-1">Henry Anderson</h3>
+        <p class="text-brand-coral font-semibold text-sm mb-4">Franchise Owner</p>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          A Nashville native with a passion for healthy living and community. Henry brought Playa Bowls to Music City to give locals a place to fuel up, feel good, and enjoy something truly fresh.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand-green py-16 text-center">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="font-display font-black text-white text-3xl md:text-4xl mb-3">Come Meet Us in Person</h2>
+      <p class="text-green-200 text-lg mb-8">We'd love to put a face to a name — stop by and say hello!</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/locations" class="bg-white text-brand-green hover:bg-green-50 font-bold px-8 py-4 rounded-full shadow transition-all">
+          Find Our Location
+        </a>
+        <a href="/contact" class="bg-brand-coral hover:bg-orange-500 text-white font-bold px-8 py-4 rounded-full shadow transition-all">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,60 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-brand-dark text-white pt-14 pb-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-white/10">
+
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-9 h-9 bg-brand-coral rounded-full flex items-center justify-center">
+            <span class="text-white font-display font-black text-sm">PB</span>
+          </div>
+          <div>
+            <div class="font-display font-black text-lg leading-none">Playa Bowls</div>
+            <div class="text-brand-yellow text-xs font-semibold leading-none mt-0.5">Nashville, TN</div>
+          </div>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Fresh açaí bowls, smoothies, and clean eats — bringing the beach vibes to Music City.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-display font-bold text-brand-yellow mb-4 uppercase tracking-wider text-sm">Quick Links</h4>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li><a href="/" class="hover:text-brand-yellow transition">Home</a></li>
+          <li><a href="/services" class="hover:text-brand-yellow transition">Menu & Services</a></li>
+          <li><a href="/locations" class="hover:text-brand-yellow transition">Locations</a></li>
+          <li><a href="/about" class="hover:text-brand-yellow transition">About Us</a></li>
+          <li><a href="/contact" class="hover:text-brand-yellow transition">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact info -->
+      <div>
+        <h4 class="font-display font-bold text-brand-yellow mb-4 uppercase tracking-wider text-sm">Visit Us</h4>
+        <address class="not-italic text-sm text-gray-300 space-y-2">
+          <p>246 Rep John Lewis Way N<br/>Nashville, TN 37219</p>
+          <p>Mon–Fri: 7:00 AM – 7:00 PM<br/>Sat–Sun: 8:00 AM – 6:00 PM</p>
+          <p>
+            <a href="mailto:hello@playabowlstn.com" class="hover:text-brand-yellow transition">
+              hello@playabowlstn.com
+            </a>
+          </p>
+        </address>
+      </div>
+
+    </div>
+
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+      <p>&copy; {year} Playa Bowls Nashville. All rights reserved.</p>
+      <p>Proudly serving Nashville, TN</p>
+    </div>
+
+  </div>
+</footer>

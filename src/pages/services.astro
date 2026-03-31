@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const categories = [
+  {
+    name: 'Açaí Bowls',
+    emoji: '🫐',
+    color: 'bg-purple-50 border-purple-200',
+    badge: 'bg-purple-100 text-purple-700',
+    items: [
+      { name: 'Original Açaí', price: '$11.99', desc: 'Açaí, banana, strawberry, honey, granola, coconut flakes' },
+      { name: 'PB & Jelly Bowl', price: '$12.99', desc: 'Açaí, banana, peanut butter, strawberry jam, granola' },
+      { name: 'Coco Loco', price: '$12.99', desc: 'Açaí, coconut milk, mango, pineapple, toasted coconut' },
+      { name: 'Surf Rider', price: '$13.49', desc: 'Açaí, blueberry, banana, almond butter, chia, hemp seeds' },
+    ],
+  },
+  {
+    name: 'Pitaya (Dragon Fruit) Bowls',
+    emoji: '🐉',
+    color: 'bg-pink-50 border-pink-200',
+    badge: 'bg-pink-100 text-pink-700',
+    items: [
+      { name: 'Pink Sunset', price: '$12.99', desc: 'Pitaya, mango, pineapple, coconut flakes, agave' },
+      { name: 'Tropical Storm', price: '$13.49', desc: 'Pitaya, passion fruit, banana, kiwi, granola' },
+      { name: 'Island Breeze', price: '$12.49', desc: 'Pitaya, strawberry, lychee, mint, honey drizzle' },
+    ],
+  },
+  {
+    name: 'Green Bowls',
+    emoji: '🥬',
+    color: 'bg-green-50 border-green-200',
+    badge: 'bg-green-100 text-green-700',
+    items: [
+      { name: 'The Green Machine', price: '$12.99', desc: 'Spinach, banana, almond milk, almond butter, chia seeds' },
+      { name: 'Avocado Dream', price: '$13.99', desc: 'Avocado, banana, spinach, hemp seeds, honey, granola' },
+      { name: 'Matcha Zen', price: '$12.99', desc: 'Matcha, banana, coconut milk, almonds, blueberries' },
+    ],
+  },
+  {
+    name: 'Smoothies',
+    emoji: '🥤',
+    color: 'bg-yellow-50 border-yellow-200',
+    badge: 'bg-yellow-100 text-yellow-700',
+    items: [
+      { name: 'Mango Tango', price: '$8.99', desc: '16 oz — Mango, pineapple, orange juice, turmeric' },
+      { name: 'Berry Blast', price: '$8.99', desc: '16 oz — Mixed berries, banana, almond milk, honey' },
+      { name: 'Peanut Power', price: '$9.49', desc: '16 oz — Banana, peanut butter, oat milk, cacao, vanilla' },
+      { name: 'Green Detox', price: '$9.49', desc: '16 oz — Spinach, cucumber, apple, ginger, lemon' },
+    ],
+  },
+  {
+    name: 'Juices & More',
+    emoji: '🍹',
+    color: 'bg-orange-50 border-orange-200',
+    badge: 'bg-orange-100 text-orange-700',
+    items: [
+      { name: 'Cold-Pressed OJ', price: '$5.99', desc: 'Fresh-squeezed orange juice, served daily' },
+      { name: 'Coconut Water', price: '$4.99', desc: '100% natural coconut water, straight from the source' },
+      { name: 'Açaí Shot', price: '$3.99', desc: 'A concentrated 2oz shot of pure açaí power' },
+    ],
+  },
+];
+---
+
+<Layout title="Menu & Services" description="Explore Playa Bowls Nashville's full menu — açaí bowls, pitaya bowls, green bowls, smoothies, and fresh juices.">
+  <Navbar />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-brand-green to-green-800 py-20 text-center relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-72 h-72 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="relative max-w-3xl mx-auto px-4">
+      <span class="text-brand-yellow font-semibold text-sm uppercase tracking-widest">Fresh Daily</span>
+      <h1 class="font-display font-black text-white text-5xl md:text-6xl mt-3 mb-4">Our Menu</h1>
+      <p class="text-green-100 text-lg leading-relaxed">
+        Every item is handcrafted with real ingredients. No shortcuts, no fillers — just pure, tropical goodness.
+      </p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 50L1440 50L1440 20C1200 45 960 50 720 42C480 35 240 10 0 20L0 50Z" fill="#FFF8F0"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Menu Categories -->
+  <section class="py-16 bg-brand-cream">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+      {categories.map(cat => (
+        <div class={`rounded-3xl border-2 ${cat.color} overflow-hidden`}>
+          <div class="px-8 py-6 flex items-center gap-3 border-b border-current/10">
+            <span class="text-3xl">{cat.emoji}</span>
+            <h2 class="font-display font-black text-brand-dark text-2xl">{cat.name}</h2>
+            <span class={`ml-auto text-xs font-bold px-3 py-1 rounded-full ${cat.badge}`}>
+              {cat.items.length} items
+            </span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-current/10">
+            {cat.items.map((item, idx) => (
+              <div class={`p-6 ${idx % 2 === 0 && idx === cat.items.length - 1 && cat.items.length % 2 !== 0 ? 'sm:col-span-2' : ''}`}>
+                <div class="flex justify-between items-start mb-1.5">
+                  <h3 class="font-semibold text-brand-dark text-base">{item.name}</h3>
+                  <span class="font-bold text-brand-coral ml-4 shrink-0">{item.price}</span>
+                </div>
+                <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Customization note -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="text-5xl mb-4">🎨</div>
+      <h2 class="font-display font-black text-brand-dark text-3xl md:text-4xl mb-4">Make It Yours</h2>
+      <p class="text-gray-500 text-lg leading-relaxed mb-8">
+        Every bowl is fully customizable. Add extra toppings, swap bases, adjust portion size, or ask about allergen-friendly options. Just ask!
+      </p>
+      <div class="flex flex-wrap justify-center gap-3 text-sm font-semibold">
+        {['Gluten-Free Options', 'Vegan Friendly', 'Nut-Free Available', 'Protein Add-ons', 'Extra Toppings', 'Half Portions'].map(tag => (
+          <span class="bg-brand-green/10 text-brand-green px-4 py-2 rounded-full">{tag}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand-yellow py-16 text-center">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="font-display font-black text-brand-dark text-3xl md:text-4xl mb-3">Hungry? Come on in!</h2>
+      <p class="text-yellow-800 text-lg mb-8">No reservations needed. Walk in and build your perfect bowl.</p>
+      <a href="/locations" class="bg-brand-green hover:bg-green-700 text-white font-bold px-8 py-4 rounded-full shadow-lg transition-all hover:shadow-xl">
+        Find Our Location →
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

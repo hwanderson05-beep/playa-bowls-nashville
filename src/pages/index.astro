@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const features = [
+  {
+    icon: '🌊',
+    title: 'Always Fresh',
+    desc: 'Every bowl is made to order with real fruit, fresh toppings, and quality ingredients you can trust.',
+  },
+  {
+    icon: '🌿',
+    title: 'Clean & Healthy',
+    desc: 'No artificial anything. Just wholesome, nutrient-packed goodness that fuels your day.',
+  },
+  {
+    icon: '🎨',
+    title: 'Customize Your Bowl',
+    desc: 'Build your perfect bowl from dozens of bases, toppings, and drizzles. It\'s your creation.',
+  },
+];
+
+const menu_highlights = [
+  { name: 'Acaí Original', desc: 'Acaí, banana, strawberry, honey, granola', color: 'bg-purple-100', emoji: '🫐' },
+  { name: 'Pitaya Bowl', desc: 'Dragon fruit, mango, pineapple, coconut flakes', color: 'bg-pink-100', emoji: '🐉' },
+  { name: 'Green Bowl', desc: 'Spinach, banana, almond butter, chia seeds', color: 'bg-green-100', emoji: '🥑' },
+  { name: 'Tropical Smoothie', desc: 'Mango, pineapple, coconut milk, turmeric', color: 'bg-yellow-100', emoji: '🥭' },
+];
+---
+
+<Layout title="Home">
+  <Navbar />
+
+  <!-- Hero -->
+  <section class="relative bg-brand-green overflow-hidden">
+    <!-- Decorative blobs -->
+    <div class="absolute -top-20 -right-20 w-96 h-96 bg-brand-yellow/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-brand-coral/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/10 text-brand-yellow text-sm font-semibold px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm border border-white/20">
+        🌴 Now Open in Nashville
+      </div>
+      <h1 class="font-display font-black text-white text-5xl md:text-7xl leading-none mb-6">
+        Eat Fresh.<br/>
+        <span class="text-brand-yellow">Live Tropical.</span>
+      </h1>
+      <p class="text-green-100 text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
+        Nashville's home for açaí bowls, pitaya bowls, smoothies, and clean eats that bring the beach right to Music City.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/services" class="bg-brand-coral hover:bg-orange-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5">
+          See Our Menu
+        </a>
+        <a href="/locations" class="bg-white/10 hover:bg-white/20 text-white font-bold text-lg px-8 py-4 rounded-full border border-white/30 backdrop-blur-sm transition-all">
+          Find Us
+        </a>
+      </div>
+    </div>
+
+    <!-- Wave divider -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 60L60 50C120 40 240 20 360 15C480 10 600 20 720 27.5C840 35 960 40 1080 37.5C1200 35 1320 25 1380 20L1440 15V60H1380C1320 60 1200 60 1080 60C960 60 840 60 720 60C600 60 480 60 360 60C240 60 120 60 60 60H0Z" fill="#FFF8F0"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Why Playa Bowls -->
+  <section class="py-20 bg-brand-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="font-display font-black text-brand-dark text-4xl md:text-5xl mb-4">
+          Why Playa Bowls?
+        </h2>
+        <p class="text-gray-500 text-lg max-w-xl mx-auto">
+          We believe healthy food should taste amazing and make you feel even better.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {features.map(f => (
+          <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-md transition text-center border border-orange-50">
+            <div class="text-5xl mb-4">{f.icon}</div>
+            <h3 class="font-display font-bold text-brand-dark text-xl mb-3">{f.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Highlights -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="text-brand-coral font-semibold text-sm uppercase tracking-widest">Fresh Every Day</span>
+        <h2 class="font-display font-black text-brand-dark text-4xl md:text-5xl mt-2 mb-4">Menu Favorites</h2>
+        <p class="text-gray-500 text-lg max-w-xl mx-auto">A taste of what's waiting for you at the shop.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {menu_highlights.map(item => (
+          <div class={`${item.color} rounded-3xl p-6 hover:scale-105 transition-transform duration-200 cursor-default`}>
+            <div class="text-4xl mb-3">{item.emoji}</div>
+            <h3 class="font-display font-bold text-brand-dark text-lg mb-1">{item.name}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/services" class="inline-flex items-center gap-2 bg-brand-green hover:bg-green-700 text-white font-bold px-8 py-4 rounded-full shadow transition-all hover:shadow-md">
+          View Full Menu →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hours Banner -->
+  <section class="bg-brand-coral py-14">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="text-4xl mb-4">🕐</div>
+      <h2 class="font-display font-black text-white text-3xl md:text-4xl mb-6">Today's Hours</h2>
+      <div class="inline-grid grid-cols-2 gap-x-16 gap-y-3 text-white text-lg font-semibold">
+        <span class="text-right text-orange-100 font-normal">Mon – Fri</span>
+        <span class="text-left">7:00 AM – 7:00 PM</span>
+        <span class="text-right text-orange-100 font-normal">Sat – Sun</span>
+        <span class="text-left">8:00 AM – 6:00 PM</span>
+      </div>
+      <div class="mt-8">
+        <a href="/locations" class="bg-white text-brand-coral hover:bg-orange-50 font-bold px-8 py-3 rounded-full shadow transition-all">
+          Get Directions
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 bg-brand-cream text-center">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="font-display font-black text-brand-dark text-4xl md:text-5xl mb-4">
+        Ready to Bowl? 🏖️
+      </h2>
+      <p class="text-gray-500 text-lg mb-10">
+        Come visit us in downtown Nashville or reach out with any questions. We can't wait to see you!
+      </p>
+      <a href="/contact" class="bg-brand-coral hover:bg-orange-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg transition-all hover:shadow-xl hover:-translate-y-0.5">
+        Contact Us
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
