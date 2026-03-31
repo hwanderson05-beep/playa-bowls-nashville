@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
+const SITE_URL = "https://playa-bowls-nashville.vercel.app";
+
 const categories = [
   { emoji: '🫐', name: 'Açaí Bowls', href: '/services#acai', color: 'bg-purple-100 hover:bg-purple-200' },
   { emoji: '🥭', name: 'Mango Bowls', href: '/services#mango', color: 'bg-orange-100 hover:bg-orange-200' },
@@ -13,6 +15,82 @@ const categories = [
   { emoji: '🍏', name: 'Cold Pressed', href: '/services#juices', color: 'bg-lime-100 hover:bg-lime-200' },
   { emoji: '☕', name: 'Cold Brew', href: '/services#coldbrew', color: 'bg-amber-100 hover:bg-amber-200' },
 ];
+
+const homePageSchema = [
+  // WebPage schema
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/#webpage`,
+    "url": SITE_URL,
+    "name": "Açaí Bowls & Pitaya Bowls in Nashville, TN | Playa Bowls Nashville",
+    "description": "Playa Bowls Nashville — Nashville's best açaí bowls, pitaya (dragon fruit) bowls, and smoothies. Open 7 AM Mon–Fri at 246 Rep John Lewis Way N, downtown Nashville.",
+    "isPartOf": { "@id": `${SITE_URL}/#website` },
+    "about": { "@id": `${SITE_URL}/#restaurant` },
+    "primaryImageOfPage": { "@type": "ImageObject", "url": `${SITE_URL}/og-image.jpg` },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL }
+      ]
+    }
+  },
+  // FAQPage schema — answers common local questions
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is Playa Bowls Nashville located?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Playa Bowls Nashville is located at 246 Rep John Lewis Way N, Nashville, TN 37219 — in the heart of downtown Nashville near the Tennessee State Capitol."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What time does Playa Bowls Nashville open?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Playa Bowls Nashville opens at 7:00 AM Monday through Friday, and at 8:00 AM on Saturday and Sunday. We close at 7:00 PM weekdays and 6:00 PM on weekends."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Playa Bowls Nashville serve pitaya (dragon fruit) bowls?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Playa Bowls Nashville offers a full Pitaya bowl menu made with vibrant dragon fruit base. Popular options include the Pink Flamingo, Dragonberry, Electric Mermaid, Goji Bowl, Nutaya, and Pink Power bowls."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Playa Bowls Nashville have vegan or plant-based options?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — Playa Bowls Nashville has 100% plant-based options across bowls, smoothies, and cold-pressed juices. All açaí, pitaya, mango, and coconut bases are plant-based, and most toppings can be customized to be fully vegan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Playa Bowls Nashville offer delivery?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Playa Bowls Nashville is available for delivery via Grubhub and other delivery platforms. You can also order pickup directly through our menu page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What neighborhoods is Playa Bowls Nashville near?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Playa Bowls Nashville is in downtown Nashville (SoBro area), just minutes from The Gulch, Germantown, East Nashville, Midtown, and Broadway. We're 2 blocks from the Tennessee State Capitol and 3 blocks from Bridgestone Arena."
+        }
+      }
+    ]
+  }
+];
 ---
 
 <Layout
@@ -20,6 +98,7 @@ const categories = [
   description="Playa Bowls Nashville — Nashville's best açaí bowls, pitaya (dragon fruit) bowls, and smoothies. Open 7 AM Mon–Fri at 246 Rep John Lewis Way N, downtown Nashville."
   keywords="açaí bowl Nashville, pitaya bowl Nashville, dragon fruit bowl Nashville, acai bowl downtown Nashville, smoothie bowl Nashville TN, healthy breakfast Nashville, best açaí Nashville"
   canonical="https://playa-bowls-nashville.vercel.app"
+  pageSchema={homePageSchema}
 >
   <Navbar />
 

@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
+const SITE_URL = "https://playa-bowls-nashville.vercel.app";
+
 const bowlsByBase = [
   {
     base: 'Playa Açaí',
@@ -172,11 +174,200 @@ const matchaMania = [
 ];
 ---
 
+
+// ── FoodMenu schema — full service catalog ────────────────────
+const menuSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/services#webpage`,
+    "url": `${SITE_URL}/services`,
+    "name": "Menu — Açaí Bowls, Pitaya Bowls & Smoothies Nashville | Playa Bowls Nashville",
+    "description": "Full Playa Bowls Nashville menu: açaí bowls, pitaya (dragon fruit) bowls, mango bowls, coconut bowls, smoothies, cold-pressed juices, wellness shots, and cold brew.",
+    "isPartOf": { "@id": `${SITE_URL}/#website` },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
+        { "@type": "ListItem", "position": 2, "name": "Menu", "item": `${SITE_URL}/services` }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "@id": `${SITE_URL}/services#menu`,
+    "name": "Playa Bowls Nashville Full Menu",
+    "url": `${SITE_URL}/services`,
+    "description": "74+ fresh items: açaí bowls, pitaya (dragon fruit) bowls, mango bowls, coconut bowls, green bowls, banana bowls, oatmeal bowls, smoothies, cold-pressed juices, wellness shots, and cold brew.",
+    "inLanguage": "en-US",
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "Açaí Bowls",
+        "description": "Bowls made with our signature Playa Açaí blend",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "8th Ave", "description": "Playa Açaí topped with blueberry flax granola, banana & honey", "suitableForDiet": ["https://schema.org/VeganDiet","https://schema.org/GlutenFreeDiet"] },
+          { "@type": "MenuItem", "name": "Pura Vida", "description": "Playa Açaí topped with blueberry flax granola, strawberry, blueberry & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Tropical", "description": "Playa Açaí topped with blueberry flax granola, pineapple, banana, coconut flakes & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Nutella Bowl", "description": "Playa Açaí topped with blueberry flax granola, strawberry, banana, coconut flakes & Nutella®" },
+          { "@type": "MenuItem", "name": "Power Bowl", "description": "Playa Açaí with chocolate protein topped with blueberry flax granola, banana & peanut butter" }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Pitaya (Dragon Fruit) Bowls",
+        "description": "Vibrant bowls made with our dragon fruit pitaya base — Nashville's only pitaya bowl destination",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Pink Flamingo", "description": "Playa Pitaya topped with blueberry flax granola, banana & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Dragonberry", "description": "Playa Pitaya topped with blueberry flax granola, strawberry, blueberry & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Electric Mermaid", "description": "Playa Pitaya topped with blueberry flax granola, pineapple, mango, kiwi, coconut flakes & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Goji Bowl", "description": "Playa Pitaya topped with blueberry flax granola, banana, pineapple, goji berries, coconut flakes & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Nutaya", "description": "Playa Pitaya topped with blueberry flax granola, banana, blueberry, cacao nibs, coconut flakes & Nutella®" },
+          { "@type": "MenuItem", "name": "Pink Power", "description": "Playa Pitaya with vanilla protein topped with blueberry flax granola, banana & honey" }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Mango Bowls",
+        "description": "Sweet tropical mango base bowls",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Mucho Mango Bowl", "description": "Playa Mango topped with blueberry flax granola, pineapple, banana, coconut flakes & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Mango Berry Bowl", "description": "Playa Mango topped with blueberry flax granola, strawberry, blueberry & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Goldie Mango Bowl", "description": "Playa Mango topped with blueberry flax granola, strawberry, banana & Nutella®" },
+          { "@type": "MenuItem", "name": "Mango Power Bowl", "description": "Playa Mango with vanilla protein topped with blueberry flax granola, banana & peanut butter" }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Coconut Bowls",
+        "description": "Creamy coconut blend base bowls",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Coco Bowl", "description": "Playa Coconut blend topped with blueberry flax granola, banana & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Coco Berry", "description": "Playa Coconut blend topped with blueberry flax granola, strawberry, blueberry & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Coco Craze", "description": "Playa Coconut blend topped with blueberry flax granola, banana, mango, pineapple, coconut flakes & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Coconut Power", "description": "Playa Coconut blend with vanilla protein topped with blueberry flax granola, banana, coconut flakes & almond butter" },
+          { "@type": "MenuItem", "name": "Nutelloco", "description": "Playa Coconut blend topped with blueberry flax granola, banana, strawberry, coconut flakes, cacao nibs & Nutella®" }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Green Bowls",
+        "description": "Kale, banana, pineapple & coconut milk base",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Ocean Ave", "description": "Green blend topped with blueberry flax granola, banana & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Pacific", "description": "Green blend topped with blueberry flax granola, banana, strawberry, sliced almonds, chia seeds & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Hemp", "description": "Green blend topped with blueberry flax granola, banana, blueberry, hemp seeds & agave", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Lola", "description": "Green blend topped with blueberry flax granola, pineapple, mango, coconut flakes & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Green Power Bowl", "description": "Green blend with vanilla protein topped with blueberry flax granola, banana & almond butter" }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Banana Bowls",
+        "description": "Banana, honey & almond milk base",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Nica", "description": "Banana blend topped with blueberry flax granola, banana, strawberry, walnuts, cacao nibs & peanut butter" },
+          { "@type": "MenuItem", "name": "Tide", "description": "Banana blend topped with blueberry flax granola, pineapple, mango, kiwi, goji berries, bee pollen & honey", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Olas", "description": "Banana blend topped with blueberry flax granola, banana, blueberry, coconut flakes, chia seeds & almond butter", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Costa", "description": "Banana blend with vanilla protein topped with blueberry flax granola, banana, mint & Nutella®" }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Oatmeal Bowls",
+        "description": "Warm oatmeal base bowls",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "#1 Nutella Bowl", "description": "Oatmeal with strawberry, banana, coconut flakes, Nutella®" },
+          { "@type": "MenuItem", "name": "#2 Blueberry, Strawberry & Almonds", "description": "Oatmeal with blueberry, strawberry, sliced almonds", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "#3 Power Bowl", "description": "Oatmeal with banana, peanut butter, chocolate protein" },
+          { "@type": "MenuItem", "name": "#4 Maple & Brown Sugar", "description": "Oatmeal with maple & brown sugar", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "#5 Banana, Cinnamon, Figs & Walnuts", "description": "Oatmeal with banana, walnut, cinnamon, fig", "suitableForDiet": ["https://schema.org/VeganDiet"] }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Matcha Mania",
+        "description": "Limited series matcha bowls and smoothies",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Coco Madness Bowl", "description": "Half Matcha Base, Half Playa Coconut® Base topped with blueberry flax granola, strawberry, mango & coco whip" },
+          { "@type": "MenuItem", "name": "Strawberry Madness Bowl", "description": "Half Matcha Base, Half Stupid Cupid Base topped with blueberry flax granola, strawberry, banana, cacao nibs & Nutella®" },
+          { "@type": "MenuItem", "name": "Matcha Mango Smoothie", "description": "Playa Coconut® Base, banana, matcha & coconut milk layered with Playa Mango Base", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Matcha Berry Smoothie", "description": "Playa Coconut® Base, banana, matcha & coconut milk layered with Stupid Cupid Base", "suitableForDiet": ["https://schema.org/VeganDiet"] }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Protein Wave",
+        "description": "High-protein bowls and smoothies",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Protein Power Açaí Bowl", "description": "Playa Açaí with chocolate protein topped with blueberry flax granola, banana & peanut butter" },
+          { "@type": "MenuItem", "name": "Protein Tropical Açaí Bowl", "description": "Playa Açaí with chocolate protein topped with blueberry flax granola, pineapple, banana, coconut flakes & honey" },
+          { "@type": "MenuItem", "name": "Tidal Wave Smoothie", "description": "Playa Coconut® blend, banana, pineapple, vanilla protein, blue spirulina, coconut milk & Cocowhip®" },
+          { "@type": "MenuItem", "name": "Wellness Wave Smoothie", "description": "Kale, pineapple, banana, vanilla protein, coconut milk & Cocowhip®" },
+          { "@type": "MenuItem", "name": "Rise & Shine Smoothie", "description": "Banana, blueberry, vanilla protein, peanut butter, blueberry flax granola & coconut milk" }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Smoothies",
+        "description": "Fresh blended smoothies made with real fruit and coconut milk",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Pink Pitaya Smoothie", "description": "Playa Pitaya, coconut milk", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Strawberry Banana Smoothie", "description": "Strawberry, banana, coconut milk", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Matcha Smoothie", "description": "Matcha green tea, banana, pineapple, coconut milk", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Orange Power Smoothie", "description": "Orange, vanilla protein, pineapple, coconut milk" },
+          { "@type": "MenuItem", "name": "Green Smoothie", "description": "Kale, pineapple, banana, coconut milk", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Kowabunga Smoothie", "description": "Banana, strawberry, blueberry, coconut milk", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Dang Smoothie", "description": "Banana, wheat grass powder, peanut butter, cinnamon, almond milk", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Aloha Smoothie", "description": "Banana, mango, pineapple, coconut milk", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Acai Energy Smoothie", "description": "Playa Açaí, strawberry, banana, coconut milk", "suitableForDiet": ["https://schema.org/VeganDiet"] }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Cold Pressed Juices",
+        "description": "100% cold pressed, never heated juices",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Mermaid Fuel", "description": "Kale, pineapple, apple, mint", "suitableForDiet": ["https://schema.org/VeganDiet","https://schema.org/GlutenFreeDiet"] },
+          { "@type": "MenuItem", "name": "Green Room", "description": "Kale, apple, cucumber, mint, lemon", "suitableForDiet": ["https://schema.org/VeganDiet","https://schema.org/GlutenFreeDiet"] },
+          { "@type": "MenuItem", "name": "Ground Swell", "description": "Kale, apple, spinach", "suitableForDiet": ["https://schema.org/VeganDiet","https://schema.org/GlutenFreeDiet"] },
+          { "@type": "MenuItem", "name": "Ding Repair", "description": "Cucumber, carrot, apple, beet, spinach", "suitableForDiet": ["https://schema.org/VeganDiet","https://schema.org/GlutenFreeDiet"] },
+          { "@type": "MenuItem", "name": "Beach Break", "description": "Pineapple, carrot, ginger, lemon", "suitableForDiet": ["https://schema.org/VeganDiet","https://schema.org/GlutenFreeDiet"] },
+          { "@type": "MenuItem", "name": "Dawn Patrol", "description": "Orange, carrot, apple", "suitableForDiet": ["https://schema.org/VeganDiet","https://schema.org/GlutenFreeDiet"] }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Wellness Shots",
+        "description": "Concentrated wellness shots packed with superfoods",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Elderberry Shot", "description": "Apple, organic lemon, elderberry & cayenne pepper — boosts immunity & reduces inflammation", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Ginger Bomb", "description": "Orange, ginger, lemon, himalayan salt & oregano extract", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Wellness Warrior", "description": "Apple, carrot, lemon, ginger, beet, turmeric & cayenne", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Daylight Detox", "description": "Filtered water, organic lemon, dragon fruit puree, ginger, fo-ti root, cayenne & himalayan salt", "suitableForDiet": ["https://schema.org/VeganDiet"] }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Cold Brew Coffee",
+        "description": "New Orleans-style cold brew coffee",
+        "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Playola Cold Brew", "description": "Chicory coffee concentrate — New Orleans Style", "suitableForDiet": ["https://schema.org/VeganDiet"] },
+          { "@type": "MenuItem", "name": "Sweet Cream Cold Brew", "description": "Chicory coffee concentrate with sweet cream creamer & oat milk" }
+        ]
+      }
+    ]
+  }
+];
+---
+
 <Layout
   title="Menu — Açaí Bowls, Pitaya Bowls & Smoothies Nashville"
   description="Explore the full Playa Bowls Nashville menu. Açaí bowls, pitaya (dragon fruit) bowls, mango bowls, coconut bowls, smoothies, cold-pressed juices, and more. Downtown Nashville."
   keywords="açaí bowl menu Nashville, pitaya bowl Nashville, dragon fruit bowl Nashville, mango bowl Nashville, smoothie Nashville TN, cold pressed juice Nashville, Playa Bowls menu Nashville"
   canonical="https://playa-bowls-nashville.vercel.app/services"
+  pageSchema={menuSchema}
 >
   <Navbar />
 
