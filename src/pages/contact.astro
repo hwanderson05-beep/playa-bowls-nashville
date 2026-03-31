@@ -2,56 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-
-const SITE_URL = "https://playa-bowls-nashville.vercel.app";
-
-const contactSchema = [
-  {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "@id": `${SITE_URL}/contact#webpage`,
-    "url": `${SITE_URL}/contact`,
-    "name": "Contact Playa Bowls Nashville — Order, Catering & Inquiries",
-    "description": "Contact Playa Bowls Nashville for orders, catering, event inquiries, or general questions. Located at 246 Rep John Lewis Way N, Nashville TN. Open Mon–Fri 7 AM.",
-    "isPartOf": { "@id": `${SITE_URL}/#website` },
-    "about": { "@id": `${SITE_URL}/#restaurant` },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Contact", "item": `${SITE_URL}/contact` }
-      ]
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${SITE_URL}/contact#catering`,
-    "name": "Smoothie Bowl Catering Nashville",
-    "serviceType": "Food Catering",
-    "description": "Playa Bowls Nashville offers catering for corporate events, office lunches, weddings, and private parties in Nashville, TN. Fresh açaí bowls, pitaya bowls, and smoothies made to order.",
-    "areaServed": {
-      "@type": "City",
-      "name": "Nashville",
-      "addressRegion": "TN"
-    },
-    "provider": { "@id": `${SITE_URL}/#restaurant` },
-    "offers": {
-      "@type": "Offer",
-      "name": "Catering Inquiry",
-      "url": `${SITE_URL}/contact`,
-      "description": "Request a catering quote for your event. Corporate lunches, office catering, weddings, and more."
-    }
-  }
-];
 ---
 
 <Layout
   title="Contact — Order & Get in Touch"
   description="Contact Playa Bowls Nashville at 246 Rep John Lewis Way N, Nashville TN. Order online, ask about catering, or just say hi. Open Mon–Fri 7 AM."
-  keywords="Playa Bowls Nashville contact, order açaí bowl Nashville, catering Nashville healthy food, contact Playa Bowls downtown Nashville, smoothie bowl catering Nashville"
+  keywords="Playa Bowls Nashville contact, order açaí bowl Nashville, catering Nashville healthy food, contact Playa Bowls downtown Nashville"
   canonical="https://playa-bowls-nashville.vercel.app/contact"
-  pageSchema={contactSchema}
 >
   <Navbar />
 

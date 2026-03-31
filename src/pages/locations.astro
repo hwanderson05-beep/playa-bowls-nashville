@@ -2,94 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-
-const SITE_URL = "https://playa-bowls-nashville.vercel.app";
-
-const locationsSchema = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": `${SITE_URL}/locations#webpage`,
-    "url": `${SITE_URL}/locations`,
-    "name": "Location & Hours — Playa Bowls Downtown Nashville",
-    "description": "Find Playa Bowls Nashville at 246 Rep John Lewis Way N, Nashville, TN 37219. Open Mon–Fri 7 AM, Sat–Sun 8 AM.",
-    "isPartOf": { "@id": `${SITE_URL}/#website` },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Locations", "item": `${SITE_URL}/locations` }
-      ]
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "FoodEstablishment", "Restaurant"],
-    "@id": `${SITE_URL}/locations#localbusiness`,
-    "name": "Playa Bowls Nashville",
-    "url": SITE_URL,
-    "telephone": "+16155550100",
-    "email": "hello@playabowlstn.com",
-    "image": `${SITE_URL}/og-image.jpg`,
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "246 Rep John Lewis Way N",
-      "addressLocality": "Nashville",
-      "addressRegion": "TN",
-      "postalCode": "37219",
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 36.1627,
-      "longitude": -86.7816
-    },
-    "openingHours": ["Mo-Fr 07:00-19:00", "Sa-Su 08:00-18:00"],
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "07:00",
-        "closes": "19:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Saturday","Sunday"],
-        "opens": "08:00",
-        "closes": "18:00"
-      }
-    ],
-    "hasMap": "https://maps.google.com/?q=246+Rep+John+Lewis+Way+N+Nashville+TN+37219",
-    "publicAccess": true,
-    "smokingAllowed": false,
-    "amenityFeature": [
-      { "@type": "LocationFeatureSpecification", "name": "Wheelchair Accessible", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Pet-Friendly Outdoor Seating", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Nearby Parking", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Online Ordering", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Delivery", "value": true }
-    ],
-    "areaServed": [
-      { "@type": "Neighborhood", "name": "Downtown Nashville" },
-      { "@type": "Neighborhood", "name": "SoBro" },
-      { "@type": "Neighborhood", "name": "The Gulch" },
-      { "@type": "Neighborhood", "name": "Germantown" },
-      { "@type": "Neighborhood", "name": "East Nashville" },
-      { "@type": "Neighborhood", "name": "Midtown Nashville" },
-      { "@type": "Neighborhood", "name": "Wedgewood-Houston" },
-      { "@type": "Neighborhood", "name": "12South" }
-    ],
-    "nearbyPOI": [
-      "Bridgestone Arena",
-      "Tennessee State Capitol",
-      "Ryman Auditorium",
-      "Broadway Nashville",
-      "Nashville Farmers Market",
-      "Country Music Hall of Fame"
-    ]
-  }
-];
 ---
 
 <Layout
@@ -97,7 +9,6 @@ const locationsSchema = [
   description="Find Playa Bowls Nashville at 246 Rep John Lewis Way N, Nashville, TN 37219. Open Mon–Fri 7 AM, Sat–Sun 8 AM. Açaí bowls, pitaya (dragon fruit) bowls & smoothies near SoBro, The Gulch, and Germantown."
   keywords="Playa Bowls Nashville location, açaí bowl downtown Nashville, pitaya bowl Nashville address, acai bowl near me Nashville, healthy food downtown Nashville TN, bowl restaurant Nashville"
   canonical="https://playa-bowls-nashville.vercel.app/locations"
-  pageSchema={locationsSchema}
 >
   <Navbar />
 
